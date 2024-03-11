@@ -30,6 +30,7 @@
     }
 }*/
 
+import java.util.AbstractList;
 import java.util.HashMap;
 
 public class Chat
@@ -42,25 +43,13 @@ public class Chat
         channels.put(0, new Channel());
     }
 
-    public void join(Integer chanNumber)
+    public AbstractList<String> join(Integer chanNumber)
     {
         Channel chan = channels.get(chanNumber);
-        chan.join();
+        return chan.join();
     }
 
-    public void name(Integer chanNumber)
-    {
-        Channel chan = channels.get(chanNumber);
-        chan.join();
-    }
-
-    public void channel(Integer chanNumber)
-    {
-        Channel chan = channels.get(chanNumber);
-        chan.join();
-    }
-
-    public String send()
+    public String send(String message)
     {
         return "";
     }

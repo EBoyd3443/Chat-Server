@@ -86,23 +86,21 @@ public class Channel
         logChangeLock = new ReentrantLock();
     }
 
-    public void join()
+    public ArrayList<String> join()
     {
-
+        return log;
     }
 
-    public void name()
+    public void send(String message)
     {
-
-    }
-
-    public void channel()
-    {
-
-    }
-
-    public void send()
-    {
-
+        logChangeLock.lock();
+        try
+        {
+            log.add(message);
+        }
+        finally
+        {
+            logChangeLock.unlock();
+        }
     }
 }

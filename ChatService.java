@@ -99,8 +99,13 @@ public class ChatService implements Runnable
     private PrintWriter out;
     private Chat chat;
 
+    private String uName;
+    private Integer channelNumber;
+
     public ChatService(Socket aSocket, Chat aChat)
     {
+        uName = "Guest";
+        channelNumber = 0;
         s = aSocket;
         chat = aChat;
     }
@@ -137,32 +142,25 @@ public class ChatService implements Runnable
 
     public void executeCommand(String command)
     {
-        int account = in.nextInt();
-
-        ///////////////////////////////////////////////////////////////////////////////
-        if (command.equals("JOIN"))
-        {
-            double amount = in.nextDouble();
-            chat.join(0);//////////////////////////(account, amount)/////////
+        switch(command) {
+            case "JOIN": {
+                out.println(chat.join(channelNumber));
+            }
+            case "NAME": {
+                uName = in.nextLine();
+            }
+            case "CHANNEL": {
+                channelNumber = in.nextInt();
+            }
+            case "SEND": {
+                String message = in.nextLine();
+                out.println(chat.send(message));
+                out.flush();
+            }
+            default: {
+                out.println("Invalid command");
+                out.flush();
+            }
         }
-        else if (command.equals("NAME"))
-        {
-            double amount = in.nextDouble();
-            chat.name(0);///////////////////////////////////////////
-        }
-        else if (command.equals("CHANNEL"))
-        {
-            double amount = in.nextDouble();
-            chat.channel(0);///////////////////////////////////////////
-        }
-        else if (!command.equals("SEND"))
-        {
-            out.println("Invalid command");
-            out.flush();
-            return;
-        }
-        out.println(chat.send());///////////////////////////
-        out.flush();
-        /////////////////////////////////////////////////////////////////////////////////
     }
 }
