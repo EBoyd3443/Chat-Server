@@ -92,12 +92,13 @@ public class Channel
         return log;
     }
 
-    public void send(String message)
+    public void send(String uName, String message)
     {
+
         logChangeLock.lock();
         try
         {
-            log.add(message);
+            log.add(uName + ": " + message);
         }
         finally
         {

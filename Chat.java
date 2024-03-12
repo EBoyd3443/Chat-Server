@@ -49,10 +49,10 @@ public class Chat
         return chan.log();
     }
 
-    public void send(String message, Integer chanNum)
+    public void send(String uName, String message, Integer chanNum)
     {
         Channel chan = channels.get(chanNum);
-        chan.send(message);
+        chan.send(uName, message);
     }
 
     public void channel(Integer n)
