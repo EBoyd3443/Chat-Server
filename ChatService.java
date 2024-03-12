@@ -157,7 +157,7 @@ public class ChatService implements Runnable
                 String message = in.nextLine();
                 chat.send(uName, message, channelNumber);
             }
-            case "LOG": {
+            case "JOIN": {
                 out.println(chat.log(channelNumber));
                 out.flush();
                 break;

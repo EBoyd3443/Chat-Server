@@ -17,6 +17,8 @@ public class User
             Scanner in = new Scanner(instream);
             PrintWriter out = new PrintWriter(outstream);
 
+
+
             String response;
 
             String command = "NAME Sarah";
@@ -30,7 +32,7 @@ public class User
 //            response = in.nextLine();
 //            System.out.println("Receiving: " + response);
 
-            command = "LOG";
+            command = "JOIN";
             System.out.println("Sending: " + command);
             out.print(command + "\n");
             out.flush();
@@ -48,7 +50,14 @@ public class User
             response = in.nextLine();
             System.out.println("Receiving: " + response);
 
-            command = "LOG";
+            command = "JOIN";
+            System.out.println("Sending: " + command);
+            out.print(command + "\n");
+            out.flush();
+            response = in.nextLine();
+            System.out.println("Receiving: " + response);
+
+            command = "QUITE";
             System.out.println("Sending: " + command);
             out.print(command + "\n");
             out.flush();
