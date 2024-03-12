@@ -151,6 +151,8 @@ public class ChatService implements Runnable
             case "CHANNEL": {
                 channelNumber = in.nextInt();
                 chat.channel(channelNumber);
+                out.println(chat.log(channelNumber));
+                out.flush();
                 break;
             }
             case "SEND": {

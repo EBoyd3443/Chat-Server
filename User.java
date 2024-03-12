@@ -42,6 +42,9 @@ public class User
             command = "CHANNEL 1";
             System.out.println("Sending: " + command);
             out.print(command + "\n");
+            out.flush();
+            response = in.nextLine();
+            System.out.println("Receiving: " + response);
 
             command = "SEND Hello World";
             System.out.println("Sending: " + command);
