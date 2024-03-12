@@ -20,11 +20,27 @@ public class User
             String command = "NAME Steve";
             System.out.println("Sending: " + command);
             out.print(command + "\n");
+
+
+            command = "SEND Hello World";
+            System.out.println("Sending: " + command);
+            out.print(command + "\n");
             out.flush();
             String response = in.nextLine();
             System.out.println("Receiving: " + response);
 
-            command = "SEND Hello World";
+            command = "LOG";
+            System.out.println("Sending: " + command);
+            out.print(command + "\n");
+            out.flush();
+            response = in.nextLine();
+            System.out.println("Receiving: " + response);
+
+            command = "CHANNEL 1";
+            System.out.println("Sending: " + command);
+            out.print(command + "\n");
+
+            command = "LOG";
             System.out.println("Sending: " + command);
             out.print(command + "\n");
             out.flush();

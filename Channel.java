@@ -80,13 +80,14 @@ public class Channel
     private ArrayList<String> log;
     private Lock logChangeLock;
 
-    public Channel()
+    public Channel(Integer n)
     {
         log = new ArrayList<String>();
         logChangeLock = new ReentrantLock();
+        log.add("Welcome to channel " + n +".");
     }
 
-    public ArrayList<String> join()
+    public ArrayList<String> log()
     {
         return log;
     }

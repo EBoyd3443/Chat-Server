@@ -30,7 +30,7 @@
     }
 }*/
 
-import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Chat
@@ -40,22 +40,26 @@ public class Chat
     public Chat()
     {
         channels = new HashMap<>();
-        channels.put(0, new Channel());
+        channels.put(0, new Channel(0));
     }
 
-    public AbstractList<String> join(Integer chanNumber)
+    public ArrayList<String> log(Integer chanNumber)
     {
         Channel chan = channels.get(chanNumber);
-        return chan.join();
+        return chan.log();
     }
 
-    public String send(String message)
+    public void send(String message, Integer chanNum)
     {
-        return "";
+        Channel chan = channels.get(chanNum);
+        chan.send(message);
     }
 
-    public void quite()
+    public void channel(Integer n)
     {
-
+        if(!channels.containsKey(n))
+        {
+            channels.put(n, new Channel(n));
+        }
     }
 }

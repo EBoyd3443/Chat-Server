@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Iterator;
 import java.util.Scanner;
 
 ///**
@@ -143,19 +144,23 @@ public class ChatService implements Runnable
     public void executeCommand(String command)
     {
         switch(command) {
-            case "JOIN": {
-                out.println(chat.join(channelNumber));
-            }
             case "NAME": {
                 uName = in.nextLine();
+                break;
             }
             case "CHANNEL": {
                 channelNumber = in.nextInt();
+                chat.channel(channelNumber);
+                break;
             }
             case "SEND": {
                 String message = in.nextLine();
-                out.println(chat.send(message));
+                chat.send(message, channelNumber);
+            }
+            case "LOG": {
+                out.println(chat.log(channelNumber));
                 out.flush();
+                break;
             }
             default: {
                 out.println("Invalid command");
